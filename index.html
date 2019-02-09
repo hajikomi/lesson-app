@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--レスポンシブデザインを行うためのビューポート設定-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lesson</title>
+    <!--style.cssの読み込み-->
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+    <!--bootstrapの読み込み-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!--fontawesomeの読み込み-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="photo w-100">
+        <div class="container"> 
+          <h1 class="title">*Entry System*</h1>
+          <h4>レッスンサイト</h4>
+        </div> 
+    </div>
+  
+    <div class="login">
+      <div class="container">
+        <h2 class="title" id="title">ログイン</h2>
+        <div id="alia">
+          <form id="form_list">
+            <table>
+              <tr>
+                <th>ID</th>
+                <td><input id="id" type="text" name="id"></td>
+              </tr>
+              <tr>
+                <th>パスワード</th>
+                <td><input id="password" type="password" name="password"></td>
+              </tr>
+              <tr>
+                <td><input id= "btn" type="button" value="ログイン"></td>
+              </tr>
+            </table>
+          </form>
+          <div id="result"></div>
+        </div>
+      </div>
+    </div>
+    <!--script.jsの読み込み-->
+    <script src="script.js"></script>
+  </body>
+</html>
