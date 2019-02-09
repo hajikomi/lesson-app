@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+body {
+    margin:0;
+    padding:0;
+    font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    padding-left:0;
+}
+
+table {
+    margin:20px auto;
+}
+table tr th {
+    background-color: #999;
+    color:#fff;
+    text-align: center;
+    padding:5px 10px;
+}
+
+table tr td {
+    background-color: #eee;
+    color:#666;
+    text-align: center;
+    padding:5px 10px;
+}
+
+.title {
+    margin:30px auto 10px auto;
+}
+
+.container {
+    width:100%;
+    overflow: hidden;
+    text-align: center;
+}
+.size {
+    margin:20px auto;
+    font-size: 15px;
+}
+
+
