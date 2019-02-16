@@ -24,35 +24,6 @@ function getFromClient(request,response) {
     var url_parts = url.parse(request.url,true);
     switch (url_parts.pathname) {
         case '/':
-            /*if (request.method == 'POST'){
-                var body="";
-
-                request.on('data',(data) => {
-                    body += data;
-                });
-                request.on('end',()=>{
-                    var post_data = qs.parse(body);
-                    console.log(post_data);
-                    var index_new = index_page.replace('親バカ','ママ');
-                    if (post_data.msg !== "") {
-                        var insert="";
-                        for (var key in post_data) {
-                            insert += key + '=' +post_data[key] + '<br>';
-                        }
-                        var index_new = index_new.replace('データ',insert);
-                    }
-                    response.writeHead(200,{'Content-Type':'text/html'});
-                    //response.writeHead(200,{'Content-Type':'application/json'});
-                    response.write(index_new);
-                    response.end();
-                    //response.end(JSON.stringify(customer)); 
-                });
-
-            } else {
-                response.writeHead(200,{'Content-Type':'text/html'});
-                response.write(index_page);
-                response.end();        
-            }*/
             response.writeHead(200,{'Content-Type':'text/html'});
             response.write(index_page);
             response.end();
@@ -69,8 +40,9 @@ function getFromClient(request,response) {
             response.write(script_js);
             response.end();
             break;
-
-        case '/ajax':
+        
+        //ログイン
+        case '/login':
             if (request.method == 'POST'){
                 var body="";
                 request.on('data',(data) => {
@@ -84,10 +56,7 @@ function getFromClient(request,response) {
                     //mysqlに接続
                     var connection = mysql.createConnection(mysql_setting);
                     connection.connect();
-
-                    //connection.query('SELECT * from lessondata where id=? and password=?',[id,password],
                     connection.query('SELECT * from eventdata,lessondata where eventdata.myteam = lessondata.team and lessondata.id=? and lessondata.password=?',
-                    //connection.query('SELECT * from( lessondata join eventdata on lessondata.team = eventdata.myteam) where id=? and password=?',
                     [id,password],
                         function(error,results,fields){
                             if (error == null) {
@@ -118,11 +87,45 @@ function getFromClient(request,response) {
                     connection.end();
                 });
             };
-            break;       
+            break;
 
+        //アカウント作成       
+        case '/account':
+            //console.log('通信してます');
+            if (request.method == 'POST'){
+                var body="";
+                request.on('data',(data) => {
+                    body += data;
+                });
+                request.on('end',()=>{
+                    var post_data = JSON.parse(body);
+                    console.log(post_data); 
+                    //mysqlに接続
+                    var connection = mysql.createConnection(mysql_setting);
+                    connection.connect();
+                    connection.query('INSERT INTO lessondata SET ?',post_data,
+                        function(error,results,fields){
+                            if (error == null) {
+                                    console.log(results);
+                                    response.writeHead(200,{'Content-Type':'application/json'});
+                                    response.end(JSON.stringify(post_data));
+                            } else {
+                                var elog={};
+                                elog.name = null;
+                                elog.password='error';
+                                console.log(elog);
+                                response.writeHead(200,{'Content-Type':'application/json'});
+                                response.end(JSON.stringify(elog));
+                            }
+                        }   
+                    );
+                    connection.end();
+                });
+            };
+            break; 
         default:
             response.writeHead(200,{'Content-Type':'text/plain'});
             response.end('no page...');
             break;    
     }
-}
+};
