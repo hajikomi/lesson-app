@@ -17,9 +17,9 @@
         var req_data = {};
         req_data.id = id.value;
         req_data.password=password.value;
-
+        
         var xhr = new XMLHttpRequest();
-        var url = 'http://localhost:3000/ajax';
+        var url = 'http://localhost:3000/login';
 
         xhr.onreadystatechange = function(){
             if (xhr.readyState === 4){

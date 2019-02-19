@@ -3,11 +3,11 @@ const fs = require('fs');
 const url = require('url');
 const qs = require('querystring');
 const mysql = require('mysql');
-
+/*
 const index_page = fs.readFileSync('./index.html','utf8');
 const style_css = fs.readFileSync('./style.css','utf8');
 const script_js = fs.readFileSync('./script.js','utf8');
-
+*/
 var mysql_setting = {
     host    :'localhost',
     user    :'root',
@@ -21,9 +21,13 @@ server.listen(3000);
 console.log('Server start!');
 
 function getFromClient(request,response) {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'POST');
+
     var url_parts = url.parse(request.url,true);
+    console.log(url_parts.pathname);
     switch (url_parts.pathname) {
-        case '/':
+/*        case '/':
             response.writeHead(200,{'Content-Type':'text/html'});
             response.write(index_page);
             response.end();
@@ -40,7 +44,7 @@ function getFromClient(request,response) {
             response.write(script_js);
             response.end();
             break;
-        
+*/        
         //ログイン
         case '/login':
             if (request.method == 'POST'){
@@ -49,6 +53,7 @@ function getFromClient(request,response) {
                     body += data;
                 });
                 request.on('end',()=>{
+                    console.log(body); 
                     var post_data = JSON.parse(body);
                     console.log(post_data); 
                     var id = post_data.id;
