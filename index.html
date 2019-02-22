@@ -26,7 +26,7 @@
         <h2 class="title" id="title">ログイン</h2>
         <div id="alia">
           <form id="form_list">
-            <table>
+            <table id="table_list">
               <tr>
                 <th>ID</th>
                 <td><input id="id" type="text" name="id"></td>
@@ -35,10 +35,8 @@
                 <th>パスワード</th>
                 <td><input id="password" type="password" name="password"></td>
               </tr>
-              <tr>
-                <td><input id= "btn" type="button" value="ログイン"></td>
-              </tr>
             </table>
+            <input id= "btn" type="button" data-ajax="login" value="ログイン">
           </form>
           <div id="result"></div>
         </div>

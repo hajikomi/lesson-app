@@ -15,28 +15,35 @@ ul {
     list-style-type: none;
     padding-left:0;
 }
+form {
+    margin:20px auto;
+}
 
 table {
     margin:20px auto;
+    border: 1px black solid; 
+    width:50%;
 }
 table tr th {
     background-color: #999;
     color:#fff;
+    border: 1px black solid;
     text-align: center;
     padding:5px 10px;
+    width: 20%;
 }
 
 table tr td {
     background-color: #eee;
     color:#666;
-    text-align: center;
+    border: 1px black solid;
+    /*text-align: center;*/
     padding:5px 10px;
 }
 
 .title {
     margin:30px auto 10px auto;
 }
-
 .container {
     width:100%;
     overflow: hidden;
@@ -46,5 +53,3 @@ table tr td {
     margin:20px auto;
     font-size: 15px;
 }
-
-
