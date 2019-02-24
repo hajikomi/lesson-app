@@ -1,4 +1,21 @@
 
+window.onload = function(){
+    var top = document.getElementById('top');
+    var htmlTop = "";
+    htmlTop += '<div class="container"><h1 class="title">*Entry System*</h1><h4>レッスンサイト</h4></div>'; 
+    top.innerHTML =htmlTop;
+    var login = document.getElementById('login');
+    htmlLogin ="";
+    htmlLogin +='<div class="container"><h2 class="title" id="title">ログイン</h2><div id="alia">';
+    htmlLogin += '<form id="form_list"><table id="table_list"><tr><th>ID</th>';
+    htmlLogin +='<td><input id="id" type="text" name="id"></td></tr><tr><th>パスワード</th>';
+    htmlLogin +='<td><input id="password" type="password" name="password"></td></tr></table>';
+    htmlLogin +='<input id= "btn" type="button" data-ajax="login" value="ログイン"></form>';
+    htmlLogin +='<div id="result"></div></div></div>';
+    login.innerHTML=htmlLogin;
+};
+
+
 //document.addEventListener('DOMContendLoaded',function(){
     //ログイン画面のボタンクリック
     document.getElementById('btn').addEventListener('click',function(){
@@ -29,8 +46,10 @@
                         club_list(data);                                       
                     }
                 }else {
-                    result.textContent ='通信中・・・';
+                    result.textContent ='サーバーエラーが発生しました';
                 }
+            } else {
+                result.textContent = '通信中・・・';
             }
         };
         xhr.open('POST',url,true);
@@ -107,8 +126,10 @@ function getAccount(){
                                 result.textContent = 'アカウントが作成されました';
                             }
                         }else {
-                            result.textContent ='通信中・・・';
+                            result.textContent ='サーバーエラーが発生しました';
                         }
+                    }else{
+                        result.textContent = '通信中・・・';
                     }
                 }; 
                 xhr.open('POST',url,true);
