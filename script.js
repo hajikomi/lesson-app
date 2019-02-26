@@ -13,12 +13,14 @@ window.onload = function(){
     htmlLogin +='<input id= "btn" type="button" data-ajax="login" value="ログイン"></form>';
     htmlLogin +='<div id="result"></div></div></div>';
     login.innerHTML=htmlLogin;
+    document.getElementById('btn').addEventListener('click', clickLogin, false);
 };
 
 
 //document.addEventListener('DOMContendLoaded',function(){
     //ログイン画面のボタンクリック
-    document.getElementById('btn').addEventListener('click',function(){
+    //document.getElementById('btn').addEventListener('click',function(){
+    function clickLogin(event) {
         var id = document.getElementById('id');
         var password = document.getElementById('password');
         var result = document.getElementById('result');
@@ -57,7 +59,8 @@ window.onload = function(){
         //xhr.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8');
         xhr.send(JSON.stringify(req_data));
         console.log(req_data);        
-    },false);
+    }
+        //},false);
 //},false);
 //ログイン失敗時に、アカウント作成ボタン⇒アカウント作成画面⇒登録
 function getAccount(){
